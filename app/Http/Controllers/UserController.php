@@ -18,4 +18,16 @@ class UserController extends Controller
             'users' => $users
         ]);
     }
-}
+
+    public function show(string $id)
+    {
+        $user = User::find($id);
+
+        // Uncomment for debugging
+        // dd($users);
+
+        return view('users.show', [
+            'user' => $user
+        ]);
+    }
+} 
