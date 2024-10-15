@@ -1,21 +1,8 @@
 <x-layout>
-    <x-slot:heading>User</x-slot:heading>
+    <x-slot:heading>Register User</x-slot:heading>
 
-    <!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-    <form action="" method="">
+    <form action="{{ route('users.store') }}" method="POST">
+        @csrf
         <div class="space-y-12">
             <div class="border-gray-900/10">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">
@@ -46,13 +33,16 @@
                                     type="text"
                                     name="username"
                                     id="username"
-                                    value="{{$user->username}}"
-                                    placeholder="{{$user->username}}"
+                                    value="{{ old('username') }}"
+                                    placeholder="john_doe"
                                     autocomplete="username"
-                                    class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 placeholder-gray-400 focus:placeholder-transparent focus:ring-0 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
+                        @error('username')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -71,12 +61,15 @@
                             type="text"
                             name="first_name"
                             id="first_name"
-                            value="{{$user->first_name}}"
-                            placeholder="{{$user->first_name}}"
+                            value="{{ old('first_name') }}"
+                            placeholder=" John "
                             autocomplete="given-name"
-                            class="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            class="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:placeholder-transparent focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                     </div>
+                    @error('first_name')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="sm:col-span-3">
@@ -90,13 +83,15 @@
                             type="text"
                             name="last_name"
                             id="last_name"
-                            value="{{$user->first_name}}"
-                            placeholder="{{$user->last_name}}"
+                            value="{{ old('last_name') }}"
+                            placeholder=" Doe "
                             autocomplete="last_name"
-                            class="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            placeholder="{{$user->last_name}}"
+                            class="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:placeholder-transparent focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                     </div>
+                    @error('last_name')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="sm:col-span-4">
@@ -110,13 +105,15 @@
                             id="email"
                             name="email"
                             type="email"
-                            value="{{$user->email}}"
-                            placeholder="{{$user->email}}"
+                            value="{{ old('email') }}"
+                            placeholder="johndoe@email.com"
                             autocomplete="email"
-                            class="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            placeholder="{{$user->email}}"
+                            class="block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:placeholder-transparent focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                     </div>
+                    @error('email')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -132,7 +129,7 @@
                 type="submit"
                 class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-                Save
+                Create User
             </button>
         </div>
     </form>

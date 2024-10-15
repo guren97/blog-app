@@ -309,6 +309,7 @@
                     >
                         {{ $heading }}
                     </h1>
+                    <a href="{{ route('users.create') }}">Create User</a>
                 </div>
             </header>
             <main>
