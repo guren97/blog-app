@@ -30,15 +30,6 @@
             body::-webkit-scrollbar {
                 display: none;
             }
-
-            /* Reddit Sans custom font */
-            .reddit-sans-custom {
-                font-family: "Reddit Sans", sans-serif;
-                font-optical-sizing: auto;
-                font-weight: 400;
-                /* Choose a specific weight between 200 to 900 */
-                font-style: normal;
-            }
         </style>
     </head>
 
@@ -309,7 +300,10 @@
                     >
                         {{ $heading }}
                     </h1>
-                    <a href="{{ route('users.create') }}">Create User</a>
+
+                    <x-button href="{{ route('users.create') }}">
+                        Create
+                    </x-button>
                 </div>
             </header>
             <main>

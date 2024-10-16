@@ -12,7 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        // Retrieve all users, ordering by the latest created_at timestamp
+        $users = User::orderBy('created_at', 'desc')->get();
  
         return view('users.index', [
             'users' => $users
@@ -32,17 +33,14 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request){
-        // Debugging output to check request data
-        // dd($request->all());
-    
+    public function store(Request $request){ 
         // Validate the request
         $request->validate([
             'username'=> 'required|string|min:3|unique:users',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed', 
+            'password' => 'required|string|min:6', 
         ]);
     
         // Create the user
@@ -89,8 +87,13 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy($id)
+    { 
+        $user = User::findOrFail($id); 
+        $user->delete();
+ 
+        return redirect()
+            ->route('users.index')
+            ->with('success', 'User deleted successfully.'); 
     }
 }

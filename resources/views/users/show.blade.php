@@ -1,20 +1,6 @@
 <x-layout>
     <x-slot:heading>User</x-slot:heading>
 
-    <!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
     <form action="" method="">
         <div class="space-y-12">
             <div class="border-gray-900/10">
