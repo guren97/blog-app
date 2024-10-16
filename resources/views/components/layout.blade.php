@@ -8,12 +8,6 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-            rel="stylesheet"
-        />
         <script src="https://cdn.tailwindcss.com"></script>
         <script
             src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -33,7 +27,7 @@
         </style>
     </head>
 
-    <body class="h-full reddit-sans-custom">
+    <body class="h-full">
         <!--
             This example requires updating your template:
 
@@ -66,21 +60,6 @@
                                         Home
                                     </x-nav-link>
 
-                                    <!-- About link -->
-                                    <x-nav-link
-                                        href="/jobs"
-                                        :active="request()->is('jobs')"
-                                    >
-                                        Jobs
-                                    </x-nav-link>
-
-                                    <!-- Contact link -->
-                                    <x-nav-link
-                                        href="/contact"
-                                        :active="request()->is('contact')"
-                                    >
-                                        Contacts
-                                    </x-nav-link>
                                     <x-nav-link
                                         href="/users"
                                         :active="request()->is('contact')"
@@ -208,29 +187,6 @@
                             Home
                         </a>
 
-                        <!-- About link -->
-                        <a
-                            href="/jobs"
-                            class="{{
-                                request()->is('jobs') 
-                                    ? 'bg-gray-900 text-white' 
-                                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                            }} block rounded-md px-3 py-2 text-base font-medium"
-                        >
-                            Jobs
-                        </a>
-
-                        <!-- Contact link -->
-                        <a
-                            href="/contact"
-                            class="{{
-                                request()->is('contact') 
-                                    ? 'bg-gray-900 text-white' 
-                                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                            }} block rounded-md px-3 py-2 text-base font-medium"
-                        >
-                            Contacts
-                        </a>
                         <!-- Users link -->
                         <a
                             href="/users"

@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         // Retrieve all users, ordering by the latest created_at timestamp
-        $users = User::orderBy('created_at', 'desc')->get();
+        $users = User::orderBy('created_at', 'desc')->paginate(10);
  
         return view('users.index', [
             'users' => $users
@@ -24,9 +24,9 @@ class UserController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(){
-        $users = User::all(); // retrried all users for adding feature on create form
+      
          return view('users.create',[
-            'users'=>$users
+            'users' 
          ]);
     }
 
@@ -40,6 +40,7 @@ class UserController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'user_role' => 'nullable|string', // Made user_role nullable
             'password' => 'required|string|min:6', 
         ]);
     
@@ -49,6 +50,7 @@ class UserController extends Controller
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
+            'user_role' => $request->user_role ?? 'user', // Set default to 'user' if not provided
             'password' => bcrypt($request->password),
         ]);
     
